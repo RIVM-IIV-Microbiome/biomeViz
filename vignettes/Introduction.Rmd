@@ -1,0 +1,30 @@
+---
+title: "Introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(biomeViz)
+```
+
+```{r fig.height=5, fig.width=6}
+library(biomeUtils)
+library(biomeViz)
+p <- plotTopAbundant(SprockettTHData,
+                     taxa_level = "Family",
+                     top=15L,
+                     aes(color=Phylum))
+print(p)
+```
+

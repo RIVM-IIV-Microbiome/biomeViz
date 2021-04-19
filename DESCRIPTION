@@ -1,0 +1,37 @@
+Package: biomeViz
+Type: Package
+Title: Data visualization for microbiome analytics
+Version: 0.0.01
+Authors@R: 
+    c(person(given = "Sudarshan", family = "Shetty", role = c("aut", "cre"),
+             email = "sudarshanshetty9@gmail.com",
+             comment = c(ORCID = "0000-0001-7280-9915")),
+      person(given = "Person", family = "Person", role = c("aut")),
+      person(given = "Person", family = "Person", role = c("aut"),
+             email = "Person@rivm.nl")
+	     )
+Maintainer: Sudarshan Shetty <sudarshanshetty9@gmail.com>
+Description: `biomeViz` is part of the RIVM-Microbiome-Toolbox.
+              Data visualization for microbiome analytics.  
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.6.0),
+    phyloseq,
+    biomeUtils
+Imports: 
+   dplyr,
+   ggplot2,
+   rlang,
+   stats,
+   tibble
+Suggests: 
+    testthat,
+    remotes,
+    knitr,
+    rmarkdown
+Remotes: 
+    github::RIVM-IIV-Microbiome/biomeUtils
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
