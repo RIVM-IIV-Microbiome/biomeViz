@@ -40,7 +40,8 @@
 #' Shetty SA (2021). Data visualization for microbiome analytics.
 #' \url{https://github.com/microsud/biomeViz}
 #'
-#' @importFrom dplyr %>% case_when
+#' @importFrom dplyr %>% case_when across everything
+#' @importFrom tidyr replace_na
 #' @importFrom biomeUtils getSampleTibble getTaxaTibble getAbundanceTibble
 #' @importFrom rlang sym
 #' @importFrom stringr str_c
@@ -82,15 +83,19 @@ plotTidyHeatmap <- function(x,
                  TRUE ~ str_c(FeatureID, ":" , Genus, " ", Species)
                )
       ) %>%
-      dplyr::filter(FeatureID %in% select_taxa)
+      dplyr::filter(FeatureID %in% select_taxa) %>%
+      dplyr::mutate(across(everything(), ~replace_na(.x, "Unclassified")))
 
     plot.data <- plot.data %>%
       dplyr::left_join(tax_df, by = "FeatureID")
 
   } else {
 
+    tax_df <- getTaxaTibble(x, select_rows = select_taxa)  %>%
+      dplyr::mutate(across(everything(), ~replace_na(.x, "Unclassified")))
+
     plot.data <- plot.data %>%
-      dplyr::left_join(getTaxaTibble(x, select_rows = select_taxa),
+      dplyr::left_join(tax_df,
                 by = "FeatureID") %>%
       dplyr::rename(Features = "FeatureID")
 
@@ -99,9 +104,12 @@ plotTidyHeatmap <- function(x,
   if( !group_samples_by %in% sample_variables(x) ) {
     stop("group_samples_by value not found in sample_data")
   }
+
+
   plot.data <- plot.data %>%
     dplyr::left_join(getSampleTibble(x), by = "SampleID") %>%
     dplyr::group_by(!!sym(group_samples_by))
+
 
   p <- plot.data %>%
     tidyHeatmap::heatmap(

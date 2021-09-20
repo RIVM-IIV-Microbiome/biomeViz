@@ -18,22 +18,48 @@ knitr::opts_chunk$set(
 library(biomeViz)
 ```
 
-## Top ASVs  
+## Categorical and numeric plot 
 
-```{r fig.height=5, fig.width=6}
+Visualize one categorical column and one numeric column in `sample_data`.  
+
+```{r , message=FALSE, warning=FALSE}
 library(biomeUtils)
 library(biomeViz)
-p <- plotTopAbundant(SprockettTHData,
-                     taxa_level = "Family",
-                     top=15L,
-                     aes(color=Phylum))
-print(p)
+library(dplyr)
+library(microbiome)
+library(ggplot2)
+ps <- FuentesIliGutData
+# calculate Shannon diversity using microbiome::diversity and add it to
+# the sample_data in phyloseq using biomeUtils::mutateSampleData()
+ps <- mutateSampleData(ps,
+                       Shannon = microbiome::diversity(ps, "shannon")[,1])
+plotByGroup(ps,
+            x.factor="ILI",
+            y.numeric = "Shannon") +
+  geom_point(aes(color=ILI),
+             position = position_jitter(width = 0.1)) +
+  scale_color_manual(values=c("steelblue", "brown3", "grey70"))
+```
+
+
+## Top features  
+
+Plot the features with the highest abundance in all samples.  
+
+```{r fig.height=5, fig.width=6, message=FALSE, warning=FALSE}
+library(biomeUtils)
+library(biomeViz)
+plotTopAbundant(SprockettTHData,
+                taxa_level = "Family",
+                top=15L,
+                aes(color=Phylum))
+
 ```
 
 
 ## Heatmap   
 
-```{r fig.height=5, fig.width=6}
+```{r fig.height=5, fig.width=6, message=FALSE, warning=FALSE}
 library(biomeUtils)
 library(biomeViz)
 library(microbiome)
@@ -48,12 +74,12 @@ ps <- FuentesIliGutData %>%
 select_taxa <- findTopTaxa(ps, top= 10, method="mean")
 
 p <- plotTidyHeatmap(ps, select_taxa = select_taxa,
-                group_samples_by = "ILI",
-                add_taxa_label = FALSE,
-                cluster_rows = FALSE,
-                .scale = "none", # no scaling only relative abundance
-                transform = NULL,
-                palette_grouping = list(c("palegreen3", "steelblue", "brown3"))) %>%
+                     group_samples_by = "ILI",
+                     add_taxa_label = FALSE,
+                     cluster_rows = FALSE,
+                     .scale = "none", # no scaling only relative abundance
+                     transform = NULL,
+                     palette_grouping = list(c("palegreen3", "steelblue", "brown3"))) %>%
   add_line(age)
 p
 ```

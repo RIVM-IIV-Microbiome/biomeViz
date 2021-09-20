@@ -30,7 +30,7 @@ a \code{heatmap} object.
 Creates a Heatmap using `TidyHeatmap` and `ComplexHeatmap`
 }
 \details{
-A TidyHeatmap plotting from \code{\link{phyloseq-class}} object.
+A TidyHeatmap plotting wrapper for \code{\link{phyloseq-class}} object.
 }
 \examples{
 library(biomeUtils)
