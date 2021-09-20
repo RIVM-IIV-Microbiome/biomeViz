@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
 library(biomeViz)
 ```
 
+## Top ASVs  
+
 ```{r fig.height=5, fig.width=6}
 library(biomeUtils)
 library(biomeViz)
@@ -28,3 +30,30 @@ p <- plotTopAbundant(SprockettTHData,
 print(p)
 ```
 
+
+## Heatmap   
+
+```{r fig.height=5, fig.width=6}
+library(biomeUtils)
+library(biomeViz)
+library(microbiome)
+library(dplyr)
+library(tidyHeatmap)
+
+#  Transform to relative abundance
+ps <- FuentesIliGutData %>%
+  microbiome::transform("compositional")
+
+# Select taxa to plot. This avoid overcrowding 
+select_taxa <- findTopTaxa(ps, top= 10, method="mean")
+
+p <- plotTidyHeatmap(ps, select_taxa = select_taxa,
+                group_samples_by = "ILI",
+                add_taxa_label = FALSE,
+                cluster_rows = FALSE,
+                .scale = "none", # no scaling only relative abundance
+                transform = NULL,
+                palette_grouping = list(c("palegreen3", "steelblue", "brown3"))) %>%
+  add_line(age)
+p
+```

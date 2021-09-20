@@ -1,7 +1,7 @@
 Package: biomeViz
 Type: Package
 Title: Data visualization for microbiome analytics
-Version: 0.0.01
+Version: 0.0.02
 Authors@R: 
     c(person(given = "Sudarshan", family = "Shetty", role = c("aut", "cre"),
              email = "sudarshanshetty9@gmail.com",
@@ -25,11 +25,14 @@ Imports:
    ggplot2,
    rlang,
    stats,
-   tibble
+   tibble,
+   stringr,
+   tidyHeatmap
 Suggests: 
     testthat,
     remotes,
     knitr,
+    microbiome,
     rmarkdown
 Remotes: 
     github::RIVM-IIV-Microbiome/biomeUtils

@@ -37,7 +37,7 @@
 #' @author Sudarshan A. Shetty
 #'
 #' @references
-#' Shetty SA (2020). Data visualization for microbiome analytics.
+#' Shetty SA (2021). Data visualization for microbiome analytics.
 #' \url{https://github.com/microsud/biomeViz}
 #'
 #' @importFrom dplyr %>%
@@ -115,6 +115,7 @@ plotByGroup <- function(x,
          "sample_data")
   }
 
+  n <- num <- NULL
   nsamples.data <- x %>%
     getSampleTibble() %>%
     dplyr::group_by(!!sym(x.factor)) %>%

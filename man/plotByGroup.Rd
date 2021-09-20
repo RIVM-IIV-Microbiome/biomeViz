@@ -46,7 +46,7 @@ plotByGroup(ps,
 
 }
 \references{
-Shetty SA (2020). Data visualization for microbiome analytics.
+Shetty SA (2021). Data visualization for microbiome analytics.
 \url{https://github.com/microsud/biomeViz}
 }
 \author{
