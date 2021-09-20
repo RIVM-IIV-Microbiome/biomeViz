@@ -55,7 +55,7 @@ plotTidyHeatmap <- function(x,
                             ...){
 
   FeatureID <- Features <- SampleID <- n <- num <- NULL
-    sample_variables <- value <- NULL
+  sample_variables <- value <- NULL
 
   if(is.null(select_taxa) | is.null(group_samples_by)) {
     stop("Please specify select_rows and or group_samples_by")
@@ -74,14 +74,14 @@ plotTidyHeatmap <- function(x,
     tax_df <- getTaxaTibble(x) %>%
       #mutate(Species = split_species(Species, n = num_species)) %>%
       dplyr::mutate(Features =
-               case_when(
-                 is.na(Class)  ~ str_c(FeatureID, ":p_", Phylum),
-                 is.na(Order)  ~ str_c(FeatureID, ":c_", Class),
-                 is.na(Family)  ~ str_c(FeatureID, ":o_", Order),
-                 is.na(Genus)   ~ str_c(FeatureID, ":f_", Family),
-                 is.na(Species) ~ str_c(FeatureID, ":g_", Genus),
-                 TRUE ~ str_c(FeatureID, ":" , Genus, " ", Species)
-               )
+                      case_when(
+                        is.na(Class)  ~ str_c(FeatureID, ":p_", Phylum),
+                        is.na(Order)  ~ str_c(FeatureID, ":c_", Class),
+                        is.na(Family)  ~ str_c(FeatureID, ":o_", Order),
+                        is.na(Genus)   ~ str_c(FeatureID, ":f_", Family),
+                        is.na(Species) ~ str_c(FeatureID, ":g_", Genus),
+                        TRUE ~ str_c(FeatureID, ":" , Genus, " ", Species)
+                      )
       ) %>%
       dplyr::filter(FeatureID %in% select_taxa) %>%
       dplyr::mutate(across(everything(), ~replace_na(.x, "Unclassified")))
@@ -96,7 +96,7 @@ plotTidyHeatmap <- function(x,
 
     plot.data <- plot.data %>%
       dplyr::left_join(tax_df,
-                by = "FeatureID") %>%
+                       by = "FeatureID") %>%
       dplyr::rename(Features = "FeatureID")
 
   }
@@ -104,7 +104,6 @@ plotTidyHeatmap <- function(x,
   if( !group_samples_by %in% sample_variables(x) ) {
     stop("group_samples_by value not found in sample_data")
   }
-
 
   plot.data <- plot.data %>%
     dplyr::left_join(getSampleTibble(x), by = "SampleID") %>%
