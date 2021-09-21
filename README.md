@@ -5,6 +5,7 @@ In the last years at the RIVM much research has been done on data management and
 
 ## biomeViz  
 `biomeViz` focus is towards data visualization for microbiota. Data visualization is done mostly using the ggplot2 and related family of R packages.  
+The package is <span style="color:red">undergoing development</span>.  
 
 ## Related tools  
 
