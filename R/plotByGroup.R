@@ -54,6 +54,7 @@ plotByGroup <- function(x,
     stop("Please specify x.factor and y.numeric")
   }
 
+  num <- NULL
   data.plot <- x %>%
     getSampleTibble()
 
@@ -78,10 +79,11 @@ plotByGroup <- function(x,
   p <- data.plot %>%
     ggplot2::ggplot(ggplot2::aes_string(x="myaxis",
                                         y=y.numeric)) +
-    ggplot2::geom_boxplot(width=0.3,
-                          color="#191919",
-                          alpha=0.2,
-                          outlier.shape = NA) +
+    ggplot2::geom_boxplot(
+      ggplot2::aes_string(fill=x.factor),
+      width = .1,
+      outlier.shape = NA,
+      alpha=0.5) +
     xlab("") +
     theme_minimal()
   return(p)

@@ -22,12 +22,14 @@ library(biomeViz)
 
 Visualize one categorical column and one numeric column in `sample_data`.  
 
-```{r , message=FALSE, warning=FALSE}
+```{r fig.width=4, fig.height=4, message=FALSE, warning=FALSE}
 library(biomeUtils)
 library(biomeViz)
 library(dplyr)
 library(microbiome)
 library(ggplot2)
+library(gghalves)
+
 ps <- FuentesIliGutData
 # calculate Shannon diversity using microbiome::diversity and add it to
 # the sample_data in phyloseq using biomeUtils::mutateSampleData()
@@ -36,9 +38,14 @@ ps <- mutateSampleData(ps,
 plotByGroup(ps,
             x.factor="ILI",
             y.numeric = "Shannon") +
-  geom_point(aes(color=ILI),
-             position = position_jitter(width = 0.1)) +
-  scale_color_manual(values=c("steelblue", "brown3", "grey70"))
+  gghalves::geom_half_point(
+    ggplot2::aes_string(fill="ILI"),
+    side = "l",
+    range_scale = .4,
+    alpha = 0.25,
+    shape = 21) +
+  scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none")
+
 ```
 
 
@@ -83,3 +90,79 @@ p <- plotTidyHeatmap(ps, select_taxa = select_taxa,
   add_line(age)
 p
 ```
+
+
+## Raincloud  
+
+Rain clouds are effective to visualize data. Read more about their utility here 
+Allen M, Poggiali D, Whitaker K et al. Raincloud plots: a multi-platform tool for robust data visualization [version 2; peer review: 2 approved]. Wellcome Open Res 2021, 4:63 [link](https://doi.org/10.12688/wellcomeopenres.15191.2)    
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+
+library(biomeUtils)
+library(biomeViz)
+library(microbiome)
+library(ggplot2)
+library(dplyr)
+
+ps <- FuentesIliGutData %>%
+  microbiome::aggregate_taxa("Genus") %>%
+  microbiome::transform("compositional") 
+
+plotTaxaRaincloud(ps,
+                  taxa ="Bacteroides",
+                  group_samples_by = "ILI",
+                  opacity = 0.25,
+                  shape_point = 21) + # combine with ggplot2 for improvements
+  labs(y = "Relative abundance",
+       x = "",
+       subtitle = expression(paste("Raincloud plot showing the distribution of ",italic("Bacteroides")))) + 
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_line(size = .35), 
+    panel.grid.major.y = element_blank(), 
+    axis.text.y = element_text(size = 12), 
+    axis.ticks.length = unit(0, "lines"), 
+    plot.title.position = 'plot',
+    plot.subtitle = element_text(margin = margin(t = 5, b = 10)),
+    plot.margin = margin(10, 25, 10, 25)) +
+  scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
+  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none")
+```
+
+Plot CLR abundance of multiple taxa.  
+```{r fig.height=6, fig.width=6}
+
+ps <- FuentesIliGutData %>%
+  microbiome::aggregate_taxa("Genus") %>%
+  microbiome::transform("clr") 
+
+taxa.to.plot <- c("Bacteroides","Blautia","Roseburia","Faecalibacterium")
+
+plotTaxaRaincloud(ps,
+                  taxa = taxa.to.plot,
+                  group_samples_by = "ILI",
+                  opacity = 0.25,
+                  shape_point = 21) + # combine with ggplot2 for improvements
+  labs(y = "CLR Abundance",
+       x = "") + 
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_line(size = .35), 
+    panel.grid.major.y = element_blank(), 
+    axis.text.y = element_text(size = 12), 
+    axis.ticks.length = unit(0, "lines"), 
+    strip.text = element_text(face = "italic"),
+    plot.title.position = 'plot',
+    plot.subtitle = element_text(margin = margin(t = 5, b = 10)),
+    plot.margin = margin(10, 25, 10, 25)) +
+  scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
+  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none")
+
+
+```
+
+
+```{r}
+sessionInfo()
+```
+

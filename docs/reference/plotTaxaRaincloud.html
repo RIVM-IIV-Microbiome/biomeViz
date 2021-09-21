@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • biomeViz</title>
+<title>Creates a Raincloud plot — plotTaxaRaincloud • biomeViz</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Creates a Raincloud plot — plotTaxaRaincloud" />
+<meta property="og:description" content="Creates a Raincloud plot" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -115,60 +116,87 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Creates a Raincloud plot</h1>
+    
+    <div class="hidden name"><code>plotTaxaRaincloud.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Creates a Raincloud plot</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>plotTaxaRaincloud</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  taxa <span class='op'>=</span> <span class='cn'>NULL</span>,
+  group_samples_by <span class='op'>=</span> <span class='cn'>NULL</span>,
+  opacity <span class='op'>=</span> <span class='fl'>0.25</span>,
+  shape_point <span class='op'>=</span> <span class='fl'>21</span>
+<span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="plotByGroup.html">plotByGroup()</a></code> </p>
-        </td>
-        <td><p>Visualize one categorical column and one numeric column</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plotTaxaRaincloud.html">plotTaxaRaincloud()</a></code> </p>
-        </td>
-        <td><p>Creates a Raincloud plot</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plotTidyHeatmap.html">plotTidyHeatmap()</a></code> </p>
-        </td>
-        <td><p>Creates a Heatmap using `TidyHeatmap` and `ComplexHeatmap`</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plotTopAbundant.html">plotTopAbundant()</a></code> </p>
-        </td>
-        <td><p>Plot Top Abundant Taxa</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p><code>phyloseq-class</code> object.</p></td>
+    </tr>
+    <tr>
+      <th>taxa</th>
+      <td><p>Feature to plot.</p></td>
+    </tr>
+    <tr>
+      <th>group_samples_by</th>
+      <td><p>A column in <code>sample_data</code> to compare abundances.</p></td>
+    </tr>
+    <tr>
+      <th>opacity</th>
+      <td><p>Alpha value.</p></td>
+    </tr>
+    <tr>
+      <th>shape_point</th>
+      <td><p>Point shape.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <code>ggplot2</code> object.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>A Rain Cloud plotting wrapper for <code>phyloseq-class</code> object.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Shetty SA (2021). Data visualization for microbiome analytics.
+<a href='https://github.com/microsud/biomeViz'>https://github.com/microsud/biomeViz</a></p>
+<p>Scherer Cédric (2021). A Step-by-Step tutorial as supplement to my talk “ggplot
+Wizardry: My Favorite Tricks and Secrets for Beautiful Plot in R” at OutlierConf 2021.
+<a href='https://z3tt.github.io/OutlierConf2021/'>https://z3tt.github.io/OutlierConf2021/</a></p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Sudarshan A. Shetty</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeViz</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://microbiome.github.io/microbiome'>microbiome</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+
+<span class='va'>ps</span> <span class='op'>&lt;-</span> <span class='va'>FuentesIliGutData</span> <span class='op'>%&gt;%</span>
+       <span class='fu'>microbiome</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/microbiome/man/aggregate_taxa.html'>aggregate_taxa</a></span><span class='op'>(</span><span class='st'>"Genus"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+       <span class='fu'>microbiome</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/microbiome/man/transform.html'>transform</a></span><span class='op'>(</span><span class='st'>"compositional"</span><span class='op'>)</span>
+
+<span class='co'># Select taxa and group to compare</span>
+
+<span class='fu'>plotTaxaRaincloud</span><span class='op'>(</span><span class='va'>ps</span>,
+                  taxa <span class='op'>=</span><span class='st'>"Bacteroides"</span>,
+                  group_samples_by <span class='op'>=</span> <span class='st'>"ILI"</span>,
+                  opacity <span class='op'>=</span> <span class='fl'>0.25</span>,
+                  shape_point <span class='op'>=</span> <span class='fl'>21</span><span class='op'>)</span>
+</div><div class='img'><img src='plotTaxaRaincloud-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
