@@ -115,18 +115,12 @@ plotTaxaRaincloud(ps,
                   shape_point = 21) + # combine with ggplot2 for improvements
   labs(y = "Relative abundance",
        x = "",
-       subtitle = expression(paste("Raincloud plot showing the distribution of ",italic("Bacteroides")))) + 
-  theme_bw() +
-  theme(
-    panel.grid.major.x = element_line(size = .35), 
-    panel.grid.major.y = element_blank(), 
-    axis.text.y = element_text(size = 12), 
-    axis.ticks.length = unit(0, "lines"), 
-    plot.title.position = 'plot',
-    plot.subtitle = element_text(margin = margin(t = 5, b = 10)),
-    plot.margin = margin(10, 25, 10, 25)) +
+       subtitle = expression(paste("Raincloud plot showing the distribution of ",italic("Bacteroides")))) +
+  theme_biomViz()+
   scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
-  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none")
+  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
+  theme(plot.subtitle = element_text(margin = margin(t = 5, b = 10)),
+        plot.margin = margin(10, 25, 10, 25)) 
 ```
 
 Plot CLR abundance of multiple taxa.  
@@ -145,20 +139,42 @@ plotTaxaRaincloud(ps,
                   shape_point = 21) + # combine with ggplot2 for improvements
   labs(y = "CLR Abundance",
        x = "") + 
-  theme_bw() +
-  theme(
-    panel.grid.major.x = element_line(size = .35), 
-    panel.grid.major.y = element_blank(), 
-    axis.text.y = element_text(size = 12), 
-    axis.ticks.length = unit(0, "lines"), 
-    strip.text = element_text(face = "italic"),
-    plot.title.position = 'plot',
-    plot.subtitle = element_text(margin = margin(t = 5, b = 10)),
-    plot.margin = margin(10, 25, 10, 25)) +
+  theme_biomViz() + 
+  theme(strip.text = element_text(face = "italic")) +
   scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
-  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none")
+  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none")  
 
+```
 
+## PCoA plot  
+A Principal Coordinates Analysis for `phyloseq` object. To visualize similarities/dissimilarities between samples in 2D ordination. This function extends the `phyloseq` ordination plots to include taxa that correlate with chosen axis and plots them along with a side boxplot for comparing inter-sample variation within groups.
+
+```{r fig.height=5, fig.width=8}
+library(biomeUtils)
+library(dplyr)
+library(ggside)
+ps <- FuentesIliGutData %>%
+  microbiome::transform("compositional") %>%
+  mutateTaxaTable(FeatureID = taxa_names(FuentesIliGutData))
+plotPCoA(x =ps,
+         group_var = "ILI",
+         ord_method = "PCoA",
+         dist_method = "bray",
+         seed = 1253,
+         cor_method = "spearman",
+         verbose = TRUE,
+         padj_cutoff = 0.05,
+         padj_method = "fdr",
+         arrows = TRUE,
+         label_col = "grey30",
+         plot_centroids = TRUE,
+         add_side_box = TRUE,
+         axis_plot = c(1:2),
+         point_shape = 21,  # point_shape
+         point_alpha = 0.5) +
+  theme_biomViz() + 
+  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89")) +
+  scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"))
 ```
 
 

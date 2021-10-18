@@ -43,7 +43,6 @@
 #' Wizardry: My Favorite Tricks and Secrets for Beautiful Plot in R” at OutlierConf 2021.
 #' \url{https://z3tt.github.io/OutlierConf2021/}
 #'
-#'
 #' @export
 plotTaxaRaincloud <- function(x, taxa = NULL,
                               group_samples_by = NULL,
