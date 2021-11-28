@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates a Heatmap using `TidyHeatmap` and `ComplexHeatmap` — plotTidyHeatmap • biomeViz</title>
+<title>Standard ggplot2 theme for RIVM Toolbox — Themes • biomeViz</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Creates a Heatmap using `TidyHeatmap` and `ComplexHeatmap` — plotTidyHeatmap" />
-<meta property="og:description" content="Creates a Heatmap using `TidyHeatmap` and `ComplexHeatmap`" />
+<meta property="og:title" content="Standard ggplot2 theme for RIVM Toolbox — Themes" />
+<meta property="og:description" content="Standard ggplot2 theme for RIVM Toolbox" />
 
 
 
@@ -118,82 +118,66 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates a Heatmap using `TidyHeatmap` and `ComplexHeatmap`</h1>
+    <h1>Standard ggplot2 theme for RIVM Toolbox</h1>
     
-    <div class="hidden name"><code>plotTidyHeatmap.Rd</code></div>
+    <div class="hidden name"><code>Themes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Creates a Heatmap using `TidyHeatmap` and `ComplexHeatmap`</p>
+    <p>Standard ggplot2 theme for RIVM Toolbox</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plotTidyHeatmap</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  select_taxa <span class='op'>=</span> <span class='cn'>NULL</span>,
-  group_samples_by <span class='op'>=</span> <span class='cn'>NULL</span>,
-  add_taxa_label <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>theme_biomViz</span><span class='op'>(</span>base_size <span class='op'>=</span> <span class='fl'>11</span>, base_family <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+
+<span class='fu'>theme_biomViz_minimal</span><span class='op'>(</span>base_size <span class='op'>=</span> <span class='fl'>11</span>, base_family <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+
+<span class='fu'>theme_biomViz_bw</span><span class='op'>(</span>base_size <span class='op'>=</span> <span class='fl'>11</span>, base_family <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+
+<span class='fu'>scale_fill_biomeViz_summer</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>scale_colour_biomeViz_summer</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p><code>phyloseq-class</code> object.</p></td>
+      <th>base_size</th>
+      <td><p>Base size</p></td>
     </tr>
     <tr>
-      <th>select_taxa</th>
-      <td><p>Features to plot.</p></td>
-    </tr>
-    <tr>
-      <th>group_samples_by</th>
-      <td><p>A column in <code>sample_data</code> to group tiles.</p></td>
-    </tr>
-    <tr>
-      <th>add_taxa_label</th>
-      <td><p>Logical. Default is TRUE.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Arguments forwarded to tidyHeatmap::heatmap and ComplexHeatmap::Heatmap.</p></td>
+      <th>base_family</th>
+      <td><p>Base family</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a <code>heatmap</code> object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A TidyHeatmap plotting wrapper for <code>phyloseq-class</code> object.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Shetty SA (2021). Data visualization for microbiome analytics.
-<a href='https://github.com/microsud/biomeViz'>https://github.com/microsud/biomeViz</a></p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Sudarshan A. Shetty</p>
+    <p>A standard theme for ggplot2 to produce similar aesthetics for
+         RIVM Toolbox.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeViz</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://microbiome.github.io/microbiome'>microbiome</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 
 <span class='va'>ps</span> <span class='op'>&lt;-</span> <span class='va'>FuentesIliGutData</span> <span class='op'>%&gt;%</span>
-         <span class='fu'>microbiome</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/microbiome/man/transform.html'>transform</a></span><span class='op'>(</span><span class='st'>"compositional"</span><span class='op'>)</span>
-<span class='va'>select_taxa</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/biomeUtils/man/findTopTaxa.html'>findTopTaxa</a></span><span class='op'>(</span><span class='va'>ps</span>, top<span class='op'>=</span> <span class='fl'>10</span>, method<span class='op'>=</span><span class='st'>"mean"</span><span class='op'>)</span>
+  <span class='fu'>microbiome</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/microbiome/man/aggregate_taxa.html'>aggregate_taxa</a></span><span class='op'>(</span><span class='st'>"Genus"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>microbiome</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/microbiome/man/transform.html'>transform</a></span><span class='op'>(</span><span class='st'>"compositional"</span><span class='op'>)</span>
 
-<span class='fu'>plotTidyHeatmap</span><span class='op'>(</span><span class='va'>ps</span>, select_taxa <span class='op'>=</span> <span class='va'>select_taxa</span>,
-                group_samples_by <span class='op'>=</span> <span class='st'>"ILI"</span>,
-                add_taxa_label <span class='op'>=</span> <span class='cn'>FALSE</span>,
-                cluster_rows <span class='op'>=</span> <span class='cn'>FALSE</span>,
-                .scale <span class='op'>=</span> <span class='st'>"none"</span>,
-                transform <span class='op'>=</span> <span class='cn'>NULL</span>,
-                palette_value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"white"</span>, <span class='st'>"blue"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'dendextend':</span>
-#&gt; <span class='message'>  method     from </span>
-#&gt; <span class='message'>  rev.hclust vegan</span></div><div class='output co'>#&gt; <span class='message'>tidyHeatmap says: (once per session) from release 1.2.3 the grouping labels have white background by default. To add color for one-ay grouping specify palette_grouping = list(c("red", "blue"))</span></div><div class='img'><img src='plotTidyHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='plotTaxaRaincloud.html'>plotTaxaRaincloud</a></span><span class='op'>(</span><span class='va'>ps</span>,
+                  taxa <span class='op'>=</span><span class='st'>"Bacteroides"</span>,
+                  group_samples_by <span class='op'>=</span> <span class='st'>"ILI"</span>,
+                  opacity <span class='op'>=</span> <span class='fl'>0.25</span>,
+                  shape_point <span class='op'>=</span> <span class='fl'>21</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># combine with ggplot2 for improvements</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Relative abundance"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"Raincloud plot"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_biomViz_minimal</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'>scale_fill_biomeViz_summer</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_colour_biomeViz_summer</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='img'><img src='Themes-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

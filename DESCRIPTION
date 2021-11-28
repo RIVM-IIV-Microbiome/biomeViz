@@ -1,7 +1,7 @@
 Package: biomeViz
 Type: Package
 Title: Data visualization for microbiome analytics
-Version: 0.0.03
+Version: 0.0.04
 Authors@R: 
     c(person(given = "Sudarshan", family = "Shetty", role = c("aut", "cre"),
              email = "sudarshanshetty9@gmail.com",
@@ -33,7 +33,8 @@ Imports:
    gghalves,
    ggrepel,
    ggside,
-   vegan
+   vegan,
+   scales
 Suggests: 
     testthat,
     remotes,

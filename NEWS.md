@@ -1,3 +1,3 @@
-# biomeViz 0.1.0
+# biomeViz 0.0.04
 
-* Added a `NEWS.md` file to track changes to the package.
+* Added a `themes` to the package.

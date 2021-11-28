@@ -1,6 +1,6 @@
 #' Standard ggplot2 theme for RIVM Toolbox
 #'
-#' @name theme_biomViz
+#' @name Themes
 #'
 #' @details A standard theme for ggplot2 to produce similar aesthetics for
 #'          RIVM Toolbox.
@@ -31,34 +31,129 @@
 #'   labs(y = "Relative abundance",
 #'        x = "",
 #'        subtitle = "Raincloud plot") +
-#'   theme_biomViz()+
-#'   scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
-#'   scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
-#'   theme(plot.subtitle = element_text(margin = margin(t = 5, b = 10)),
-#'         plot.margin = margin(10, 25, 10, 25))
+#'   theme_biomViz_minimal()+
+#'   scale_fill_biomeViz_summer() +
+#'   scale_colour_biomeViz_summer()
 #'
-#' @export
+
 NULL
+
+#' @rdname Themes
+#' @aliases theme_biomViz
+#' @export
 theme_biomViz <- function(base_size = 11, base_family = "") {
   half_line <- base_size/2
   theme_bw(base_size = base_size, base_family = base_family) %+replace%
     theme(
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
+      panel.grid = element_blank() ,
       axis.ticks.length = unit(half_line / 2.2, "pt"),
       strip.background = element_rect(fill = NA, colour = NA),
-      strip.text.x = element_text(colour = "grey30"),
-      strip.text.y = element_text(colour = "grey30"),
-      axis.text = element_text(colour = "grey10", size = rel(0.9)),
-      axis.title = element_text(colour = "grey10", size = rel(0.9)),
-      legend.title = element_text(colour = "grey30", size = rel(0.9)),
-      panel.border = element_rect(fill = NA, colour = "grey70", size = rel(0.9)),
-      legend.key.size = unit(0.9, "lines"),
-      legend.text = element_text(size = rel(0.7), colour = "grey30"),
+      strip.text.x = element_text(colour = "#303030", size = rel(1.2), face = "bold"),
+      strip.text.y = element_text(colour = "#303030", size = rel(1.2), face = "bold"),
+      axis.text = element_text(colour="#303030", size = rel(1)),
+      axis.title = element_text(colour = "grey10", size = rel(1.2)),
+      legend.title = element_text(colour = "#303030", size = rel(1.2), face = "bold", hjust=0),
+      panel.border = element_rect(fill = NA, colour = "#181818", size = rel(0.9)),
+      legend.key.size = unit(1.2, "lines"),
+      legend.text = element_text(size = rel(1.2), colour = "#303030"),
       legend.key = element_rect(colour = NA, fill = NA),
       legend.background = element_rect(colour = NA, fill = NA),
-      plot.title = element_text(colour = "grey10", size = rel(1)),
-      plot.subtitle = element_text(colour = "grey10", size = rel(.85))
+      plot.title = element_text(colour = "#303030", size = rel(1.5),hjust = 0),
+      plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0),
+      plot.margin=unit(c(10,5,5,5),"mm")
     )
 }
-#pcoa.plot + theme_biomViz()
+
+
+#' @rdname Themes
+#' @aliases theme_biomViz_minimal
+#' @importFrom ggplot2 element_text element_rect element_blank theme_minimal theme
+#'   rel %+replace% element_line
+#' @export
+theme_biomViz_minimal <- function(base_size = 11, base_family = "") {
+  half_line <- base_size/2
+  theme_minimal(base_size = base_size, base_family = base_family) %+replace%
+    theme(
+      panel.grid.major = element_line(colour="#f0f0f0"),
+      panel.grid.minor = element_blank(),
+      axis.ticks.length = unit(half_line / 2.2, "pt"),
+      axis.ticks = element_line(colour = "#303030")  ,
+      strip.background = element_rect(fill = NA, colour = NA),
+      strip.text.x = element_text(colour = "#303030", size = rel(1.2), face = "bold"),
+      strip.text.y = element_text(colour = "#303030", size = rel(1.2), face = "bold"),
+      axis.text = element_text(colour="#303030", size = rel(1)),
+      axis.title = element_text(colour = "grey10", size = rel(1.2)),
+      axis.line = element_line(colour="#303030"),
+      legend.title = element_text(colour = "#303030", size = rel(1.2), face = "bold", hjust=0),
+      panel.border = element_blank(),
+      legend.key.size = unit(1.2, "lines"),
+      legend.text = element_text(size = rel(1.2), colour = "#303030"),
+      legend.key = element_rect(colour = NA, fill = NA),
+      legend.background = element_rect(colour = NA, fill = NA),
+      plot.title = element_text(colour = "#303030", size = rel(1.5),hjust = 0),
+      plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0)
+    )
+}
+
+#' @rdname Themes
+#' @aliases theme_biomViz_bw
+#' @importFrom ggplot2 element_text element_rect element_blank theme_minimal theme
+#'   rel %+replace% element_line
+#' @export
+theme_biomViz_bw <- function(base_size = 11, base_family = "") {
+  half_line <- base_size/2
+  theme_bw(base_size = base_size, base_family = base_family) %+replace%
+    theme(panel.background = element_rect(fill = "#F8F8F8"),
+      panel.grid.major = element_line(colour= "#DCDCDC"),
+      panel.grid.minor = element_blank(),
+      axis.ticks.length = unit(half_line / 2.2, "pt"),
+      axis.ticks = element_line(colour = "#303030")  ,
+      strip.background = element_rect(fill = "#F8F8F8", colour = "#303030"),
+      strip.text.x = element_text(colour = "#303030", size = rel(1), face = "bold"),
+      strip.text.y = element_text(colour = "#303030", size = rel(1), face = "bold", angle = -90),
+      axis.text = element_text(colour="#303030", size = rel(1)),
+      axis.title = element_text(colour = "grey10", size = rel(1.2)),
+      axis.line = element_line(colour="#303030"),
+      legend.title = element_text(colour = "#303030", size = rel(1.2), face = "bold", hjust=0),
+      panel.border = element_blank(),
+      legend.key.size = unit(1.2, "lines"),
+      legend.text = element_text(size = rel(1.2), colour = "#303030"),
+      legend.key = element_rect(colour = NA, fill = NA),
+      legend.background = element_rect(colour = NA, fill = NA),
+      plot.title = element_text(colour = "#303030", size = rel(1.5),hjust = 0, vjust = 1),
+      plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0, vjust = 1),
+      plot.margin = unit(c(1, 1, 0.5, 0.5), "lines")
+    )
+}
+
+
+
+
+#' @rdname Themes
+#' @aliases scale_fill_biomeViz_summer
+#' @importFrom scales manual_pal
+#' @importFrom ggplot2 discrete_scale
+#' @export
+scale_fill_biomeViz_summer <- function(...){
+  discrete_scale("fill","biomeViz_summer",manual_pal(values = c("#E56997","#BD97CB",
+                                                                "#66D2D6","#F5631A","#FFA303",
+                                                                "#444440","#07BB9C","#4120A9",
+                                                                "#FEC8A7","#116530","#D7D4DD")), ...)
+
+}
+
+#' @rdname Themes
+#' @aliases scale_colour_biomeViz_summer
+#' @importFrom scales manual_pal
+#' @importFrom ggplot2 discrete_scale
+#' @export
+scale_colour_biomeViz_summer <- function(...){
+  discrete_scale("colour","biomeViz_summer",manual_pal(values = c("#E56997","#BD97CB",
+                                                                  "#66D2D6","#F5631A","#FFA303",
+                                                                  "#444440","#07BB9C","#4120A9",
+                                                                  "#FEC8A7", "#116530","#D7D4DD")), ...)
+
+}
+
+
+

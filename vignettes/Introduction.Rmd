@@ -139,8 +139,8 @@ plotTaxaRaincloud(ps,
                   shape_point = 21) + # combine with ggplot2 for improvements
   labs(y = "CLR Abundance",
        x = "") + 
-  theme_biomViz() + 
-  theme(strip.text = element_text(face = "italic")) +
+  theme_biomViz_bw() + 
+  theme(strip.text.x = element_text(face = "italic")) +
   scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
   scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none")  
 
@@ -172,7 +172,7 @@ plotPCoA(x =ps,
          axis_plot = c(1:2),
          point_shape = 21,  # point_shape
          point_alpha = 0.5) +
-  theme_biomViz() + 
+  theme_biomViz_minimal() + 
   scale_color_manual(values = c("#3d6721", "#a86826", "#006c89")) +
   scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"))
 ```
