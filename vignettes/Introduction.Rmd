@@ -132,8 +132,10 @@ library(biomeUtils)
 library(biomeViz)
 plotTopAbundant(SprockettTHData,
                 taxa_level = "Family",
-                top=15L,
-                aes(color=Phylum))
+                top=10L,
+                aes(color=Phylum)) +
+  theme_biomViz_minimal() +
+  scale_colour_biomeViz_summer()
 
 ```
 

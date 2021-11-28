@@ -103,7 +103,7 @@ theme_biomViz_minimal <- function(base_size = 11, base_family = "") {
 theme_biomViz_bw <- function(base_size = 11, base_family = "") {
   half_line <- base_size/2
   theme_bw(base_size = base_size, base_family = base_family) %+replace%
-    theme(panel.background = element_rect(fill = "#F8F8F8"),
+    theme(panel.background = element_rect(fill = "#F8F8F8", color = "#303030"),
       panel.grid.major = element_line(colour= "#DCDCDC"),
       panel.grid.minor = element_blank(),
       axis.ticks.length = unit(half_line / 2.2, "pt"),
