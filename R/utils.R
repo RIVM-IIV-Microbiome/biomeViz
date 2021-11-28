@@ -32,8 +32,8 @@
 #'        x = "",
 #'        subtitle = "Raincloud plot") +
 #'   theme_biomViz_minimal()+
-#'   scale_fill_biomeViz_summer() +
-#'   scale_colour_biomeViz_summer()
+#'   scale_fill_biomeViz(palette = "viz3") +
+#'   scale_color_biomeViz(palette = "viz3")
 #'
 
 NULL
@@ -128,7 +128,8 @@ theme_biomViz_bw <- function(base_size = 11, base_family = "") {
 
 
 
-
+# Themes setup from https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+# https://twitter.com/drsimonj
 #' @rdname Themes
 #' @aliases scale_fill_biomeViz_summer
 #' @importFrom scales manual_pal
@@ -155,5 +156,102 @@ scale_colour_biomeViz_summer <- function(...){
 
 }
 
+#' Function to extract biomeViz colors as hex codes
+#'
+#' @param ... Character names of biomeViz_colors
+#' @rdname Themes
+#' @aliases biomeViz_cols
+#' @export
+biomeViz_cols <- function(...) {
+  cols <- c(...)
+
+  if (is.null(cols))
+    return (biomeViz_colors)
+
+  biomeViz_colors[cols]
+}
+
+#' List of biomeViz colors
+#' @rdname Themes
+#' @export
+biomeViz_colors <- c(
+  `darkgreen` = "#3d6721",
+  `beigeyellow` = "#e9c46a",
+  `beigeorange` = "#f4a261",
+  `beigebrown` = "#936639",
+  `beigetblue` = "#457b9d",
+  `beigegreen` = "#b5e48c",
+  `beigegrey` = "#adb5bd")
+
+#biomeViz_cols("beigegreen")
 
 
+#' biomeViz palettes
+#' @rdname Themes
+#' @export
+biomeViz_palettes <- list(
+  `summer`  = biomeViz_cols("beigegreen","beigebrown","beigeyellow","beigeorange","beigetblue","beigegrey"),
+  `summer3`  = biomeViz_cols("beigetblue","beigeyellow","beigeorange"),
+  `viz3` = biomeViz_cols("darkgreen","beigebrown","beigetblue")
+)
+
+#' Return function to interpolate a biomeViz color palette
+#'
+#' @param palette Character name of palette in biomeViz_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments to pass to colorRampPalette()
+#' @importFrom grDevices colorRampPalette
+#' @rdname Themes
+#' @export
+biomeViz_pal <- function(palette = "summer", reverse = FALSE, ...) {
+  pal <- biomeViz_palettes[[palette]]
+
+  if (reverse) pal <- rev(pal)
+
+  colorRampPalette(pal, ...)
+}
+
+#biomeViz_pal("summer")
+#' Color scale constructor for biomeViz colors
+#'
+#' @param palette Character name of palette in biomeViz_palettes
+#' @param discrete Boolean indicating whether color aesthetic is discrete or not
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to discrete_scale() or
+#'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
+#'
+#' @importFrom ggplot2 discrete_scale scale_color_gradientn
+#' @rdname Themes
+#' @aliases scale_color_biomeViz
+#' @export
+scale_color_biomeViz <- function(palette = "summer", discrete = TRUE, reverse = FALSE, ...) {
+  pal <- biomeViz_pal(palette = palette, reverse = reverse)
+
+  if (discrete) {
+    discrete_scale("colour", paste0("biomeViz_", palette), palette = pal, ...)
+  } else {
+    scale_color_gradientn(colours = pal(256), ...)
+  }
+}
+
+#' Fill scale constructor for biomeViz colors
+#'
+#' @param palette Character name of palette in biomeViz_palettes
+#' @param discrete Boolean indicating whether color aesthetic is discrete or not
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to discrete_scale() or
+#'            scale_fill_gradientn(), used respectively when discrete is TRUE or FALSE
+#'
+#' @importFrom ggplot2 discrete_scale scale_fill_gradientn
+#' @rdname Themes
+#' @aliases scale_fill_biomeViz
+#' @export
+scale_fill_biomeViz <- function(palette = "summer", discrete = TRUE, reverse = FALSE, ...) {
+  pal <- biomeViz_pal(palette = palette, reverse = reverse)
+
+  if (discrete) {
+    discrete_scale("fill", paste0("biomeViz_", palette), palette = pal, ...)
+  } else {
+    scale_fill_gradientn(colours = pal(256), ...)
+  }
+}

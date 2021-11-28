@@ -14,6 +14,19 @@ knitr::opts_chunk$set(
 )
 ```
 
+# biomeViz  
+
+`biomeViz` is part of the RIVM-ToolBox project aimed at providing standard set of tools that interact with open tools for a wide array of data analytics, including microbiomics. The RIVM-ToolBox is a set of individual R tools focused towards different goals/functionalities.  
+
+* `biomeUtils` : Data handling  
+    Outputs for standard data generating pipelines/workflows.  
+  
+* `biomeStats`: Data analytics  
+    Common data analytics including basic statistics.  
+  
+* `biomeViz`: Data visualization  
+    Data visualization of different data types.  
+
 ```{r setup}
 library(biomeViz)
 ```
@@ -29,6 +42,7 @@ library(dplyr)
 library(microbiome)
 library(ggplot2)
 library(gghalves)
+library(patchwork)
 
 ps <- FuentesIliGutData
 # calculate Shannon diversity using microbiome::diversity and add it to
@@ -48,6 +62,66 @@ plotByGroup(ps,
 
 ```
 
+
+## Theme showcase  
+```{r fig.width=6, fig.height=7}
+
+p.base <- plotByGroup(ps,
+                      x.factor="ILI",
+                      y.numeric = "Shannon") +
+  gghalves::geom_half_point(
+    ggplot2::aes_string(fill="ILI"),
+    side = "l",
+    range_scale = .4,
+    alpha = 0.25,
+    shape = 21) + 
+  labs(subtitle = "base plot") +
+  theme_bw() +
+  scale_fill_biomeViz(palette = "viz3") 
+  
+
+p.bw <- plotByGroup(ps,
+                    x.factor="ILI",
+                    y.numeric = "Shannon") +
+  gghalves::geom_half_point(
+    ggplot2::aes_string(fill="ILI"),
+    side = "l",
+    range_scale = .4,
+    alpha = 0.25,
+    shape = 21) +
+  scale_fill_biomeViz(palette = "viz3") +
+  labs(subtitle = "biomeViz bw") +
+  theme_biomViz_bw() 
+
+p.min <- plotByGroup(ps,
+                    x.factor="ILI",
+                    y.numeric = "Shannon") +
+  gghalves::geom_half_point(
+    ggplot2::aes_string(fill="ILI"),
+    side = "l",
+    range_scale = .4,
+    alpha = 0.25,
+    shape = 21) +
+  scale_fill_biomeViz(palette = "viz3") +
+  labs(subtitle = "biomeViz minimal") +
+  theme_biomViz_minimal() 
+
+p.gen <- plotByGroup(ps,
+                    x.factor="ILI",
+                    y.numeric = "Shannon") +
+  gghalves::geom_half_point(
+    ggplot2::aes_string(fill="ILI"),
+    side = "l",
+    range_scale = .4,
+    alpha = 0.25,
+    shape = 21) +
+  scale_fill_biomeViz(palette = "viz3") + 
+  labs(subtitle = "biomeViz general") +
+  theme_biomViz() 
+
+((p.base | p.bw )  / ( p.min  | p.gen ) ) + plot_layout(guides = "collect")
+
+```
 
 ## Top features  
 
@@ -86,7 +160,7 @@ p <- plotTidyHeatmap(ps, select_taxa = select_taxa,
                      cluster_rows = FALSE,
                      .scale = "none", # no scaling only relative abundance
                      transform = NULL,
-                     palette_grouping = list(c("palegreen3", "steelblue", "brown3"))) %>%
+                     palette_grouping = list(biomeViz_palettes$viz3)) %>%
   add_line(age)
 p
 ```

@@ -48,7 +48,7 @@ PCoA plot
 }
 \details{
 A Principal Coordinates Analysis for \code{\link{phyloseq-class}} object.
-         To visualize similarities/dissimilarities between samples in 2D ordination.
+         To visualize similarities or dissimilarities between samples in 2D ordination.
          This function extends the \code{phyloseq} ordination plots to include
          taxa that correlate with choosen axis and plots them along with a
          side boxplot for comparing inter-sample variation within groups.

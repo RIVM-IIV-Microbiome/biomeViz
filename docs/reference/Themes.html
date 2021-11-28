@@ -40,7 +40,13 @@
 
 
 <meta property="og:title" content="Standard ggplot2 theme for RIVM Toolbox — Themes" />
-<meta property="og:description" content="Standard ggplot2 theme for RIVM Toolbox" />
+<meta property="og:description" content="Standard ggplot2 theme for RIVM Toolbox
+Function to extract biomeViz colors as hex codes
+List of biomeViz colors
+biomeViz palettes
+Return function to interpolate a biomeViz color palette
+Color scale constructor for biomeViz colors
+Fill scale constructor for biomeViz colors" />
 
 
 
@@ -125,6 +131,12 @@
 
     <div class="ref-description">
     <p>Standard ggplot2 theme for RIVM Toolbox</p>
+<p>Function to extract biomeViz colors as hex codes</p>
+<p>List of biomeViz colors</p>
+<p>biomeViz palettes</p>
+<p>Return function to interpolate a biomeViz color palette</p>
+<p>Color scale constructor for biomeViz colors</p>
+<p>Fill scale constructor for biomeViz colors</p>
     </div>
 
     <pre class="usage"><span class='fu'>theme_biomViz</span><span class='op'>(</span>base_size <span class='op'>=</span> <span class='fl'>11</span>, base_family <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
@@ -135,7 +147,19 @@
 
 <span class='fu'>scale_fill_biomeViz_summer</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>scale_colour_biomeViz_summer</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>scale_colour_biomeViz_summer</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>biomeViz_cols</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
+
+<span class='va'>biomeViz_colors</span>
+
+<span class='va'>biomeViz_palettes</span>
+
+<span class='fu'>biomeViz_pal</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"summer"</span>, reverse <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>scale_color_biomeViz</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"summer"</span>, discrete <span class='op'>=</span> <span class='cn'>TRUE</span>, reverse <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>scale_fill_biomeViz</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"summer"</span>, discrete <span class='op'>=</span> <span class='cn'>TRUE</span>, reverse <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,8 +172,29 @@
       <th>base_family</th>
       <td><p>Base family</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments passed to discrete_scale() or
+scale_fill_gradientn(), used respectively when discrete is TRUE or FALSE</p></td>
+    </tr>
+    <tr>
+      <th>palette</th>
+      <td><p>Character name of palette in biomeViz_palettes</p></td>
+    </tr>
+    <tr>
+      <th>reverse</th>
+      <td><p>Boolean indicating whether the palette should be reversed</p></td>
+    </tr>
+    <tr>
+      <th>discrete</th>
+      <td><p>Boolean indicating whether color aesthetic is discrete or not</p></td>
+    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>character</code> of length 7.</p>
+<p>An object of class <code>list</code> of length 3.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>A standard theme for ggplot2 to produce similar aesthetics for
@@ -175,8 +220,8 @@
        x <span class='op'>=</span> <span class='st'>""</span>,
        subtitle <span class='op'>=</span> <span class='st'>"Raincloud plot"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_biomViz_minimal</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
-  <span class='fu'>scale_fill_biomeViz_summer</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_colour_biomeViz_summer</span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'>scale_fill_biomeViz</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"viz3"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_color_biomeViz</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"viz3"</span><span class='op'>)</span>
 </div><div class='img'><img src='Themes-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>

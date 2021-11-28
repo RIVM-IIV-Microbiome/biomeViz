@@ -9,8 +9,8 @@ The package is <span style="color:red">undergoing development</span>.
 
 ## Related tools  
 
-* biomeStats  
-* biomeUtils  
+* [biomeStats](https://github.com/RIVM-IIV-Microbiome/biomeStats)    
+* [biomeUtils](https://rivm-iiv-microbiome.github.io/biomeUtils/articles/Introduction.html)    
 
 
 
