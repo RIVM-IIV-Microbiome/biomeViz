@@ -40,6 +40,7 @@ NULL
 
 #' @rdname Themes
 #' @aliases theme_biomViz
+#' @importFrom ggplot2 element_text element_rect element_blank theme_bw theme margin
 #' @export
 theme_biomViz <- function(base_size = 11, base_family = "") {
   half_line <- base_size/2
@@ -58,7 +59,7 @@ theme_biomViz <- function(base_size = 11, base_family = "") {
       legend.text = element_text(size = rel(1.2), colour = "#303030"),
       legend.key = element_rect(colour = NA, fill = NA),
       legend.background = element_rect(colour = NA, fill = NA),
-      plot.title = element_text(colour = "#303030", size = rel(1.5),hjust = 0),
+      plot.title = element_text(colour = "#303030", size = rel(1.2),hjust = 0),
       plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0),
       plot.margin=unit(c(10,5,5,5),"mm")
     )
@@ -68,7 +69,7 @@ theme_biomViz <- function(base_size = 11, base_family = "") {
 #' @rdname Themes
 #' @aliases theme_biomViz_minimal
 #' @importFrom ggplot2 element_text element_rect element_blank theme_minimal theme
-#'   rel %+replace% element_line
+#'   rel %+replace% element_line margin
 #' @export
 theme_biomViz_minimal <- function(base_size = 11, base_family = "") {
   half_line <- base_size/2
@@ -90,15 +91,16 @@ theme_biomViz_minimal <- function(base_size = 11, base_family = "") {
       legend.text = element_text(size = rel(1.2), colour = "#303030"),
       legend.key = element_rect(colour = NA, fill = NA),
       legend.background = element_rect(colour = NA, fill = NA),
-      plot.title = element_text(colour = "#303030", size = rel(1.5),hjust = 0),
-      plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0)
+      plot.title = element_text(colour = "#303030", size = rel(1.2),hjust = 0, margin=margin(0,0,10,0)),
+      plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0, margin=margin(0,0,10,0)),
+      plot.margin=unit(c(10,5,5,5),"mm")
     )
 }
 
 #' @rdname Themes
 #' @aliases theme_biomViz_bw
 #' @importFrom ggplot2 element_text element_rect element_blank theme_minimal theme
-#'   rel %+replace% element_line
+#'   rel %+replace% element_line margin
 #' @export
 theme_biomViz_bw <- function(base_size = 11, base_family = "") {
   half_line <- base_size/2
@@ -113,16 +115,16 @@ theme_biomViz_bw <- function(base_size = 11, base_family = "") {
       strip.text.y = element_text(colour = "#303030", size = rel(1), face = "bold", angle = -90),
       axis.text = element_text(colour="#303030", size = rel(1)),
       axis.title = element_text(colour = "grey10", size = rel(1.2)),
-      axis.line = element_line(colour="#303030"),
+      #axis.line = element_line(colour="#303030"),
       legend.title = element_text(colour = "#303030", size = rel(1.2), face = "bold", hjust=0),
       panel.border = element_blank(),
       legend.key.size = unit(1.2, "lines"),
       legend.text = element_text(size = rel(1.2), colour = "#303030"),
       legend.key = element_rect(colour = NA, fill = NA),
       legend.background = element_rect(colour = NA, fill = NA),
-      plot.title = element_text(colour = "#303030", size = rel(1.5),hjust = 0, vjust = 1),
-      plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0, vjust = 1),
-      plot.margin = unit(c(1, 1, 0.5, 0.5), "lines")
+      plot.title = element_text(colour = "#303030", size = rel(1.2),hjust = 0, vjust = 1,margin=margin(0,0,10,0)),
+      plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0, vjust = 1, margin=margin(0,0,10,0)),
+      plot.margin=unit(c(10,5,5,5),"mm")
     )
 }
 
