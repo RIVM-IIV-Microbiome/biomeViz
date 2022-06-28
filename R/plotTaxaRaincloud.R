@@ -59,9 +59,9 @@ plotTaxaRaincloud <- function(x, taxa = NULL,
 
   # Plot
   p <- ggplot2::ggplot(prep.abund,
-                  ggplot2::aes_string(group_samples_by,
-                                      "Abundance",
-                                      color=group_samples_by)) +
+                       ggplot2::aes_string(group_samples_by,
+                                           "Abundance",
+                                           color=group_samples_by)) +
     ggdist::stat_halfeye(
       ggplot2::aes_string(fill=group_samples_by),
       adjust = .5,
@@ -121,3 +121,5 @@ plotTaxaRaincloud <- function(x, taxa = NULL,
 
   return(prep.abund)
 }
+
+

@@ -42,26 +42,37 @@ NULL
 #' @aliases theme_biomViz
 #' @importFrom ggplot2 element_text element_rect element_blank theme_bw theme margin
 #' @export
-theme_biomViz <- function(base_size = 11, base_family = "") {
+theme_biomViz <- function(base_size = 12, base_family = "") {
   half_line <- base_size/2
   theme_bw(base_size = base_size, base_family = base_family) %+replace%
     theme(
-      panel.grid = element_blank() ,
-      axis.ticks.length = unit(half_line / 2.2, "pt"),
-      strip.background = element_rect(fill = NA, colour = NA),
-      strip.text.x = element_text(colour = "#303030", size = rel(1.2), face = "bold"),
-      strip.text.y = element_text(colour = "#303030", size = rel(1.2), face = "bold"),
+      text = element_text(colour = "black",
+                          face = "plain",
+                          size = base_size,
+                          vjust = 0.5,
+                          hjust = 0.5,
+                          lineheight = 1),
+      panel.grid.minor = element_blank(),
+      #panel.border = element_rect(fill = NA, colour = "#181818"),
       axis.text = element_text(colour="#303030", size = rel(1)),
       axis.title = element_text(colour = "grey10", size = rel(1.2)),
+      axis.ticks = element_line(color = "grey50"),
+      axis.ticks.length = unit(.3, "lines"),
+      strip.background = element_blank(),
+      strip.text = element_text(size=rel(1.0)),
+      # strip.switch.pad.grid = unit(half_line/2, "pt"),
+      # strip.switch.pad.wrap = unit(half_line/2, "pt"),
+      #strip.placement = "outside",
       legend.title = element_text(colour = "#303030", size = rel(1.2), face = "bold", hjust=0),
-      panel.border = element_rect(fill = NA, colour = "#181818", size = rel(0.9)),
       legend.key.size = unit(1.2, "lines"),
       legend.text = element_text(size = rel(1.2), colour = "#303030"),
       legend.key = element_rect(colour = NA, fill = NA),
       legend.background = element_rect(colour = NA, fill = NA),
-      plot.title = element_text(colour = "#303030", size = rel(1.2),hjust = 0),
-      plot.subtitle = element_text(colour = "#303030", size = rel(1),hjust = 0),
-      plot.margin=unit(c(10,5,5,5),"mm")
+      plot.title = element_text(size = rel(1.0), color = "grey10", face = "bold",
+                                vjust = 1, margin = margin(b = half_line)),
+      plot.subtitle = element_text(size = rel(1.0), color = "grey10", hjust = 0,
+                                   vjust = 1, margin = margin(b = half_line)),
+      plot.caption = element_text(size = rel(0.8), margin = margin(t = 15))
     )
 }
 
