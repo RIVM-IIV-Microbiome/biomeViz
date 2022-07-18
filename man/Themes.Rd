@@ -21,7 +21,7 @@ An object of class \code{character} of length 7.
 An object of class \code{list} of length 3.
 }
 \usage{
-theme_biomViz(base_size = 11, base_family = "")
+theme_biomViz(base_size = 12, base_family = "")
 
 theme_biomViz_minimal(base_size = 11, base_family = "")
 

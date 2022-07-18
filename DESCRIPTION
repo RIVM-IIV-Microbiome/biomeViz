@@ -1,7 +1,7 @@
 Package: biomeViz
 Type: Package
 Title: Data visualization for microbiome analytics
-Version: 0.0.05
+Version: 0.0.06
 Authors@R: 
     c(person(given = "Sudarshan", family = "Shetty", role = c("aut", "cre"),
              email = "sudarshanshetty9@gmail.com",
@@ -45,5 +45,5 @@ Suggests:
     rmarkdown
 Remotes: 
     github::RIVM-IIV-Microbiome/biomeUtils
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 VignetteBuilder: knitr

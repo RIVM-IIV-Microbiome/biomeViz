@@ -222,7 +222,7 @@ plotPCoA <- function(x,
     stop("Provide a valid grouping variable")
   }
 
-  if (!class(x)=="phyloseq"){
+  if (!is(x, "phyloseq")){
     stop("Ïnput x must be a phyloseq object")
   }
 

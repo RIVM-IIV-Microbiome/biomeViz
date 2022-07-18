@@ -1,3 +1,7 @@
+# biomeViz 0.0.06
+
+* Added plotScatterViz.
+
 # biomeViz 0.0.05
 
 * Changes to theme_biomeViz.

@@ -62,6 +62,19 @@ plotByGroup(ps,
 
 ```
 
+## Scatter plot  
+```{r}
+library(biomeUtils)
+library(biomeViz)
+library(dplyr)
+library(microbiome)
+library(ggplot2)
+plotScatterViz(ps, x_numeric = "Shannon", y_numeric = "BMI",
+               color_var = "ILI") +
+  scale_fill_manual(values=c("steelblue", "brown3", "grey70"))+
+  scale_fill_manual(values=c("steelblue", "brown3", "grey70"))
+```
+
 
 ## Theme showcase  
 ```{r fig.width=6, fig.height=7}

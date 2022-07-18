@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeViz</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.04</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.06</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -72,7 +68,7 @@
 
       
 
-      </header><script src="Introduction_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction</h1>
@@ -85,10 +81,14 @@
 
     
     
-<div id="biomeviz" class="section level1">
-<h1 class="hasAnchor">
-<a href="#biomeviz" class="anchor"></a>biomeViz</h1>
-<p><code>biomeViz</code> is part of the RIVM-ToolBox project aimed at providing standard set of tools that interact with open tools for a wide array of data analytics, including microbiomics. The RIVM-ToolBox is a set of individual R tools focused towards different goals/functionalities.</p>
+<div class="section level2">
+<h2 id="biomeviz">biomeViz<a class="anchor" aria-label="anchor" href="#biomeviz"></a>
+</h2>
+<p><code>biomeViz</code> is part of the RIVM-ToolBox project aimed at
+providing standard set of tools that interact with open tools for a wide
+array of data analytics, including microbiomics. The RIVM-ToolBox is a
+set of individual R tools focused towards different
+goals/functionalities.</p>
 <ul>
 <li><p><code>biomeUtils</code> : Data handling<br>
 Outputs for standard data generating pipelines/workflows.</p></li>
@@ -98,317 +98,343 @@ Common data analytics including basic statistics.</p></li>
 Data visualization of different data types.</p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: phyloseq</span>
-<span class="co">#&gt; Loading required package: biomeUtils</span>
-<span class="co">#&gt; Loading required package: microbiome</span>
-<span class="co">#&gt; Loading required package: ggplot2</span>
-<span class="co">#&gt; Warning: package 'ggplot2' was built under R version 4.1.1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; microbiome R package (microbiome.github.com)</span>
-<span class="co">#&gt;     </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;  Copyright (C) 2011-2020 Leo Lahti, </span>
-<span class="co">#&gt;     Sudarshan Shetty et al. &lt;microbiome.github.io&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'microbiome'</span>
-<span class="co">#&gt; The following object is masked from 'package:ggplot2':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     alpha</span>
-<span class="co">#&gt; The following object is masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     transform</span></code></pre></div>
-<div id="categorical-and-numeric-plot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#categorical-and-numeric-plot" class="anchor"></a>Categorical and numeric plot</h2>
-<p>Visualize one categorical column and one numeric column in <code>sample_data</code>.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: phyloseq</span></span>
+<span><span class="co">#&gt; Loading required package: biomeUtils</span></span>
+<span><span class="co">#&gt; Loading required package: microbiome</span></span>
+<span><span class="co">#&gt; Loading required package: ggplot2</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; microbiome R package (microbiome.github.com)</span></span>
+<span><span class="co">#&gt;     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Copyright (C) 2011-2022 Leo Lahti, </span></span>
+<span><span class="co">#&gt;     Sudarshan Shetty et al. &lt;microbiome.github.io&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'microbiome'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:ggplot2':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     alpha</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     transform</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="categorical-and-numeric-plot">Categorical and numeric plot<a class="anchor" aria-label="anchor" href="#categorical-and-numeric-plot"></a>
+</h3>
+<p>Visualize one categorical column and one numeric column in
+<code>sample_data</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/erocoar/gghalves">gghalves</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span>
-
-<span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span>
-<span class="co"># calculate Shannon diversity using microbiome::diversity and add it to</span>
-<span class="co"># the sample_data in phyloseq using biomeUtils::mutateSampleData()</span>
-<span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomeUtils/man/mutatePhyloseq.html">mutateSampleData</a></span><span class="op">(</span><span class="va">ps</span>,
-                       Shannon <span class="op">=</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/diversity.html">diversity</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"shannon"</span><span class="op">)</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,
-            x.factor<span class="op">=</span><span class="st">"ILI"</span>,
-            y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html">geom_half_point</a></span><span class="op">(</span>
-    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,
-    side <span class="op">=</span> <span class="st">"l"</span>,
-    range_scale <span class="op">=</span> <span class="fl">.4</span>,
-    alpha <span class="op">=</span> <span class="fl">0.25</span>,
-    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome" class="external-link">microbiome</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/erocoar/gghalves" class="external-link">gghalves</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span></span>
+<span><span class="co"># calculate Shannon diversity using microbiome::diversity and add it to</span></span>
+<span><span class="co"># the sample_data in phyloseq using biomeUtils::mutateSampleData()</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomeUtils/man/mutatePhyloseq.html" class="external-link">mutateSampleData</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                       Shannon <span class="op">=</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/diversity.html" class="external-link">diversity</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"shannon"</span><span class="op">)</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>            x.factor<span class="op">=</span><span class="st">"ILI"</span>,</span>
+<span>            y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html" class="external-link">geom_half_point</a></span><span class="op">(</span></span>
+<span>    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html" class="external-link">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,</span>
+<span>    side <span class="op">=</span> <span class="st">"l"</span>,</span>
+<span>    range_scale <span class="op">=</span> <span class="fl">.4</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-2-1.png" width="384"></p>
 </div>
-<div id="theme-showcase" class="section level2">
-<h2 class="hasAnchor">
-<a href="#theme-showcase" class="anchor"></a>Theme showcase</h2>
+<div class="section level3">
+<h3 id="scatter-plot">Scatter plot<a class="anchor" aria-label="anchor" href="#scatter-plot"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">p.base</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,
-                      x.factor<span class="op">=</span><span class="st">"ILI"</span>,
-                      y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html">geom_half_point</a></span><span class="op">(</span>
-    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,
-    side <span class="op">=</span> <span class="st">"l"</span>,
-    range_scale <span class="op">=</span> <span class="fl">.4</span>,
-    alpha <span class="op">=</span> <span class="fl">0.25</span>,
-    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"base plot"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">scale_fill_biomeViz</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"viz3"</span><span class="op">)</span> 
-  
-
-<span class="va">p.bw</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,
-                    x.factor<span class="op">=</span><span class="st">"ILI"</span>,
-                    y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html">geom_half_point</a></span><span class="op">(</span>
-    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,
-    side <span class="op">=</span> <span class="st">"l"</span>,
-    range_scale <span class="op">=</span> <span class="fl">.4</span>,
-    alpha <span class="op">=</span> <span class="fl">0.25</span>,
-    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">scale_fill_biomeViz</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"viz3"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"biomeViz bw"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_bw</a></span><span class="op">(</span><span class="op">)</span> 
-
-<span class="va">p.min</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,
-                    x.factor<span class="op">=</span><span class="st">"ILI"</span>,
-                    y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html">geom_half_point</a></span><span class="op">(</span>
-    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,
-    side <span class="op">=</span> <span class="st">"l"</span>,
-    range_scale <span class="op">=</span> <span class="fl">.4</span>,
-    alpha <span class="op">=</span> <span class="fl">0.25</span>,
-    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">scale_fill_biomeViz</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"viz3"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"biomeViz minimal"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_minimal</a></span><span class="op">(</span><span class="op">)</span> 
-
-<span class="va">p.gen</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,
-                    x.factor<span class="op">=</span><span class="st">"ILI"</span>,
-                    y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html">geom_half_point</a></span><span class="op">(</span>
-    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,
-    side <span class="op">=</span> <span class="st">"l"</span>,
-    range_scale <span class="op">=</span> <span class="fl">.4</span>,
-    alpha <span class="op">=</span> <span class="fl">0.25</span>,
-    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">scale_fill_biomeViz</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"viz3"</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"biomeViz general"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">theme_biomViz</a></span><span class="op">(</span><span class="op">)</span> 
-
-<span class="op">(</span><span class="op">(</span><span class="va">p.base</span> <span class="op">|</span> <span class="va">p.bw</span> <span class="op">)</span>  <span class="op">/</span> <span class="op">(</span> <span class="va">p.min</span>  <span class="op">|</span> <span class="va">p.gen</span> <span class="op">)</span> <span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html">plot_layout</a></span><span class="op">(</span>guides <span class="op">=</span> <span class="st">"collect"</span><span class="op">)</span></code></pre></div>
-<p><img src="Introduction_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome" class="external-link">microbiome</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plotScatterViz.html">plotScatterViz</a></span><span class="op">(</span><span class="va">ps</span>, x_numeric <span class="op">=</span> <span class="st">"Shannon"</span>, y_numeric <span class="op">=</span> <span class="st">"BMI"</span>,</span>
+<span>               color_var <span class="op">=</span> <span class="st">"ILI"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"steelblue"</span>, <span class="st">"brown3"</span>, <span class="st">"grey70"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"steelblue"</span>, <span class="st">"brown3"</span>, <span class="st">"grey70"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Registered S3 method overwritten by 'ggside':</span></span>
+<span><span class="co">#&gt;   method from   </span></span>
+<span><span class="co">#&gt;   +.gg   ggplot2</span></span>
+<span><span class="co">#&gt; Scale for 'fill' is already present. Adding another scale for 'fill', which</span></span>
+<span><span class="co">#&gt; will replace the existing scale.</span></span>
+<span><span class="co">#&gt; Warning: Removed 1 rows containing non-finite values (stat_density).</span></span>
+<span><span class="co">#&gt; Warning: Removed 1 rows containing missing values (geom_point).</span></span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
-<div id="top-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#top-features" class="anchor"></a>Top features</h2>
-<p>Plot the features with the highest abundance in all samples.</p>
+<div class="section level3">
+<h3 id="theme-showcase">Theme showcase<a class="anchor" aria-label="anchor" href="#theme-showcase"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plotTopAbundant.html">plotTopAbundant</a></span><span class="op">(</span><span class="va">SprockettTHData</span>,
-                taxa_level <span class="op">=</span> <span class="st">"Family"</span>,
-                top<span class="op">=</span><span class="fl">10L</span>,
-                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color<span class="op">=</span><span class="va">Phylum</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">scale_colour_biomeViz_summer</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">p.base</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                      x.factor<span class="op">=</span><span class="st">"ILI"</span>,</span>
+<span>                      y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html" class="external-link">geom_half_point</a></span><span class="op">(</span></span>
+<span>    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html" class="external-link">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,</span>
+<span>    side <span class="op">=</span> <span class="st">"l"</span>,</span>
+<span>    range_scale <span class="op">=</span> <span class="fl">.4</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"base plot"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">scale_fill_biomeViz</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"viz3"</span><span class="op">)</span> </span>
+<span>  </span>
+<span></span>
+<span><span class="va">p.bw</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                    x.factor<span class="op">=</span><span class="st">"ILI"</span>,</span>
+<span>                    y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html" class="external-link">geom_half_point</a></span><span class="op">(</span></span>
+<span>    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html" class="external-link">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,</span>
+<span>    side <span class="op">=</span> <span class="st">"l"</span>,</span>
+<span>    range_scale <span class="op">=</span> <span class="fl">.4</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">scale_fill_biomeViz</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"viz3"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"biomeViz bw"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_bw</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">p.min</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                    x.factor<span class="op">=</span><span class="st">"ILI"</span>,</span>
+<span>                    y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html" class="external-link">geom_half_point</a></span><span class="op">(</span></span>
+<span>    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html" class="external-link">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,</span>
+<span>    side <span class="op">=</span> <span class="st">"l"</span>,</span>
+<span>    range_scale <span class="op">=</span> <span class="fl">.4</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">scale_fill_biomeViz</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"viz3"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"biomeViz minimal"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_minimal</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">p.gen</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotByGroup.html">plotByGroup</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                    x.factor<span class="op">=</span><span class="st">"ILI"</span>,</span>
+<span>                    y.numeric <span class="op">=</span> <span class="st">"Shannon"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">gghalves</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gghalves/man/geom_half_point.html" class="external-link">geom_half_point</a></span><span class="op">(</span></span>
+<span>    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_.html" class="external-link">aes_string</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>,</span>
+<span>    side <span class="op">=</span> <span class="st">"l"</span>,</span>
+<span>    range_scale <span class="op">=</span> <span class="fl">.4</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>    shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">scale_fill_biomeViz</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"viz3"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"biomeViz general"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">theme_biomViz</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="op">(</span><span class="op">(</span><span class="va">p.base</span> <span class="op">|</span> <span class="va">p.bw</span> <span class="op">)</span>  <span class="op">/</span> <span class="op">(</span> <span class="va">p.min</span>  <span class="op">|</span> <span class="va">p.gen</span> <span class="op">)</span> <span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html" class="external-link">plot_layout</a></span><span class="op">(</span>guides <span class="op">=</span> <span class="st">"collect"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 </div>
-<div id="heatmap" class="section level2">
-<h2 class="hasAnchor">
-<a href="#heatmap" class="anchor"></a>Heatmap</h2>
+<div class="section level3">
+<h3 id="top-features">Top features<a class="anchor" aria-label="anchor" href="#top-features"></a>
+</h3>
+<p>Plot the features with the highest abundance in all samples.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">tidyHeatmap</a></span><span class="op">)</span>
-
-<span class="co">#  Transform to relative abundance</span>
-<span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span> <span class="op">%&gt;%</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="st">"compositional"</span><span class="op">)</span>
-
-<span class="co"># Select taxa to plot. This avoid overcrowding </span>
-<span class="va">select_taxa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomeUtils/man/findTopTaxa.html">findTopTaxa</a></span><span class="op">(</span><span class="va">ps</span>, top<span class="op">=</span> <span class="fl">10</span>, method<span class="op">=</span><span class="st">"mean"</span><span class="op">)</span>
-
-<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotTidyHeatmap.html">plotTidyHeatmap</a></span><span class="op">(</span><span class="va">ps</span>, select_taxa <span class="op">=</span> <span class="va">select_taxa</span>,
-                     group_samples_by <span class="op">=</span> <span class="st">"ILI"</span>,
-                     add_taxa_label <span class="op">=</span> <span class="cn">FALSE</span>,
-                     cluster_rows <span class="op">=</span> <span class="cn">FALSE</span>,
-                     .scale <span class="op">=</span> <span class="st">"none"</span>, <span class="co"># no scaling only relative abundance</span>
-                     transform <span class="op">=</span> <span class="cn">NULL</span>,
-                     palette_grouping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">biomeViz_palettes</span><span class="op">$</span><span class="va">viz3</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tidyHeatmap/man/add_line.html">add_line</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>
-<span class="va">p</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plotTopAbundant.html">plotTopAbundant</a></span><span class="op">(</span><span class="va">SprockettTHData</span>,</span>
+<span>                taxa_level <span class="op">=</span> <span class="st">"Family"</span>,</span>
+<span>                top<span class="op">=</span><span class="fl">10L</span>,</span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>color<span class="op">=</span><span class="va">Phylum</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">scale_colour_biomeViz_summer</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
 </div>
-<div id="raincloud" class="section level2">
-<h2 class="hasAnchor">
-<a href="#raincloud" class="anchor"></a>Raincloud</h2>
-<p>Rain clouds are effective to visualize data. Read more about their utility here Allen M, Poggiali D, Whitaker K et al. Raincloud plots: a multi-platform tool for robust data visualization [version 2; peer review: 2 approved]. Wellcome Open Res 2021, 4:63 <a href="https://doi.org/10.12688/wellcomeopenres.15191.2">link</a></p>
+<div class="section level3">
+<h3 id="heatmap">Heatmap<a class="anchor" aria-label="anchor" href="#heatmap"></a>
+</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-
-<span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span> <span class="op">%&gt;%</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/aggregate_taxa.html">aggregate_taxa</a></span><span class="op">(</span><span class="st">"Genus"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="st">"compositional"</span><span class="op">)</span> 
-
-<span class="fu"><a href="../reference/plotTaxaRaincloud.html">plotTaxaRaincloud</a></span><span class="op">(</span><span class="va">ps</span>,
-                  taxa <span class="op">=</span><span class="st">"Bacteroides"</span>,
-                  group_samples_by <span class="op">=</span> <span class="st">"ILI"</span>,
-                  opacity <span class="op">=</span> <span class="fl">0.25</span>,
-                  shape_point <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span> <span class="co"># combine with ggplot2 for improvements</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Relative abundance"</span>,
-       x <span class="op">=</span> <span class="st">""</span>,
-       subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Raincloud plot showing the distribution of "</span>,<span class="fu"><a href="https://rdrr.io/r/grDevices/plotmath.html">italic</a></span><span class="op">(</span><span class="st">"Bacteroides"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">theme_biomViz</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">5</span>, b <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,
-        plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">25</span>, <span class="fl">10</span>, <span class="fl">25</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome" class="external-link">microbiome</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org" class="external-link">tidyHeatmap</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#  Transform to relative abundance</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html" class="external-link">transform</a></span><span class="op">(</span><span class="st">"compositional"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Select taxa to plot. This avoid overcrowding </span></span>
+<span><span class="va">select_taxa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomeUtils/man/findTopTaxa.html" class="external-link">findTopTaxa</a></span><span class="op">(</span><span class="va">ps</span>, top<span class="op">=</span> <span class="fl">10</span>, method<span class="op">=</span><span class="st">"mean"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plotTidyHeatmap.html">plotTidyHeatmap</a></span><span class="op">(</span><span class="va">ps</span>, select_taxa <span class="op">=</span> <span class="va">select_taxa</span>,</span>
+<span>                     group_samples_by <span class="op">=</span> <span class="st">"ILI"</span>,</span>
+<span>                     add_taxa_label <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                     cluster_rows <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                     .scale <span class="op">=</span> <span class="st">"none"</span>, <span class="co"># no scaling only relative abundance</span></span>
+<span>                     transform <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                     palette_grouping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">biomeViz_palettes</span><span class="op">$</span><span class="va">viz3</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/tidyHeatmap/man/add_line-method.html" class="external-link">add_line</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span></span>
+<span><span class="va">p</span></span></code></pre></div>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
-<p>Plot CLR abundance of multiple taxa.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span> <span class="op">%&gt;%</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/aggregate_taxa.html">aggregate_taxa</a></span><span class="op">(</span><span class="st">"Genus"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="st">"clr"</span><span class="op">)</span> 
-
-<span class="va">taxa.to.plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Bacteroides"</span>,<span class="st">"Blautia"</span>,<span class="st">"Roseburia"</span>,<span class="st">"Faecalibacterium"</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/plotTaxaRaincloud.html">plotTaxaRaincloud</a></span><span class="op">(</span><span class="va">ps</span>,
-                  taxa <span class="op">=</span> <span class="va">taxa.to.plot</span>,
-                  group_samples_by <span class="op">=</span> <span class="st">"ILI"</span>,
-                  opacity <span class="op">=</span> <span class="fl">0.25</span>,
-                  shape_point <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span> <span class="co"># combine with ggplot2 for improvements</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"CLR Abundance"</span>,
-       x <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>strip.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>  </code></pre></div>
-<p><img src="Introduction_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
 </div>
-<div id="pcoa-plot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#pcoa-plot" class="anchor"></a>PCoA plot</h2>
-<p>A Principal Coordinates Analysis for <code>phyloseq</code> object. To visualize similarities/dissimilarities between samples in 2D ordination. This function extends the <code>phyloseq</code> ordination plots to include taxa that correlate with chosen axis and plots them along with a side boxplot for comparing inter-sample variation within groups.</p>
+<div class="section level3">
+<h3 id="raincloud">Raincloud<a class="anchor" aria-label="anchor" href="#raincloud"></a>
+</h3>
+<p>Rain clouds are effective to visualize data. Read more about their
+utility here Allen M, Poggiali D, Whitaker K et al. Raincloud plots: a
+multi-platform tool for robust data visualization [version 2; peer
+review: 2 approved]. Wellcome Open Res 2021, 4:63 <a href="https://doi.org/10.12688/wellcomeopenres.15191.2" class="external-link">link</a></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeViz</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome" class="external-link">microbiome</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/aggregate_taxa.html" class="external-link">aggregate_taxa</a></span><span class="op">(</span><span class="st">"Genus"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html" class="external-link">transform</a></span><span class="op">(</span><span class="st">"compositional"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="../reference/plotTaxaRaincloud.html">plotTaxaRaincloud</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                  taxa <span class="op">=</span><span class="st">"Bacteroides"</span>,</span>
+<span>                  group_samples_by <span class="op">=</span> <span class="st">"ILI"</span>,</span>
+<span>                  opacity <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>                  shape_point <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span> <span class="co"># combine with ggplot2 for improvements</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Relative abundance"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">""</span>,</span>
+<span>       subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Raincloud plot showing the distribution of "</span>,<span class="fu">italic</span><span class="op">(</span><span class="st">"Bacteroides"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">theme_biomViz</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">5</span>, b <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>        plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">25</span>, <span class="fl">10</span>, <span class="fl">25</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
+<p>Plot CLR abundance of multiple taxa.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggside</span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'ggside' was built under R version 4.1.1</span>
-<span class="co">#&gt; Registered S3 method overwritten by 'ggside':</span>
-<span class="co">#&gt;   method from   </span>
-<span class="co">#&gt;   +.gg   ggplot2</span>
-<span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span> <span class="op">%&gt;%</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="st">"compositional"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/biomeUtils/man/mutatePhyloseq.html">mutateTaxaTable</a></span><span class="op">(</span>FeatureID <span class="op">=</span> <span class="fu">taxa_names</span><span class="op">(</span><span class="va">FuentesIliGutData</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plotPCoA.html">plotPCoA</a></span><span class="op">(</span>x <span class="op">=</span><span class="va">ps</span>,
-         group_var <span class="op">=</span> <span class="st">"ILI"</span>,
-         ord_method <span class="op">=</span> <span class="st">"PCoA"</span>,
-         dist_method <span class="op">=</span> <span class="st">"bray"</span>,
-         seed <span class="op">=</span> <span class="fl">1253</span>,
-         cor_method <span class="op">=</span> <span class="st">"spearman"</span>,
-         verbose <span class="op">=</span> <span class="cn">TRUE</span>,
-         padj_cutoff <span class="op">=</span> <span class="fl">0.05</span>,
-         padj_method <span class="op">=</span> <span class="st">"fdr"</span>,
-         arrows <span class="op">=</span> <span class="cn">TRUE</span>,
-         label_col <span class="op">=</span> <span class="st">"grey30"</span>,
-         plot_centroids <span class="op">=</span> <span class="cn">TRUE</span>,
-         add_side_box <span class="op">=</span> <span class="cn">TRUE</span>,
-         axis_plot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>,
-         point_shape <span class="op">=</span> <span class="fl">21</span>,  <span class="co"># point_shape</span>
-         point_alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Random number for permutation analysis ...</span>
-<span class="co">#&gt; 1253</span>
-<span class="co">#&gt; Warning in .check_taxa_axis(axis.a.tax, axis.b.tax): Second of the choosen axis</span>
-<span class="co">#&gt; in `axis_plot` has no taxa satisfying criteria to plot</span></code></pre></div>
-<p><img src="Introduction_files/figure-html/unnamed-chunk-8-1.png" width="768"></p>
+<code class="sourceCode R"><span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/aggregate_taxa.html" class="external-link">aggregate_taxa</a></span><span class="op">(</span><span class="st">"Genus"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html" class="external-link">transform</a></span><span class="op">(</span><span class="st">"clr"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">taxa.to.plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Bacteroides"</span>,<span class="st">"Blautia"</span>,<span class="st">"Roseburia"</span>,<span class="st">"Faecalibacterium"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/plotTaxaRaincloud.html">plotTaxaRaincloud</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                  taxa <span class="op">=</span> <span class="va">taxa.to.plot</span>,</span>
+<span>                  group_samples_by <span class="op">=</span> <span class="st">"ILI"</span>,</span>
+<span>                  opacity <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>                  shape_point <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span> <span class="co"># combine with ggplot2 for improvements</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"CLR Abundance"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>strip.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>  </span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
+</div>
+<div class="section level3">
+<h3 id="pcoa-plot">PCoA plot<a class="anchor" aria-label="anchor" href="#pcoa-plot"></a>
+</h3>
+<p>A Principal Coordinates Analysis for <code>phyloseq</code> object. To
+visualize similarities/dissimilarities between samples in 2D ordination.
+This function extends the <code>phyloseq</code> ordination plots to
+include taxa that correlate with chosen axis and plots them along with a
+side boxplot for comparing inter-sample variation within groups.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R version 4.1.0 (2021-05-18)</span>
-<span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span>
-<span class="co">#&gt; Running under: Windows 10 x64 (build 19043)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; locale:</span>
-<span class="co">#&gt; [1] LC_COLLATE=English_United States.1252 </span>
-<span class="co">#&gt; [2] LC_CTYPE=English_United States.1252   </span>
-<span class="co">#&gt; [3] LC_MONETARY=English_United States.1252</span>
-<span class="co">#&gt; [4] LC_NUMERIC=C                          </span>
-<span class="co">#&gt; [5] LC_TIME=English_United States.1252    </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; attached base packages:</span>
-<span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt;  [1] ggside_0.1.2      tidyHeatmap_1.3.1 patchwork_1.1.1   gghalves_0.1.1   </span>
-<span class="co">#&gt;  [5] dplyr_1.0.6       biomeViz_0.0.04   biomeUtils_0.016  microbiome_1.14.0</span>
-<span class="co">#&gt;  [9] ggplot2_3.3.5     phyloseq_1.36.0  </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;   [1] Rtsne_0.15             colorspace_2.0-1       rjson_0.2.20          </span>
-<span class="co">#&gt;   [4] ellipsis_0.3.2         rprojroot_2.0.2        circlize_0.4.13       </span>
-<span class="co">#&gt;   [7] XVector_0.31.1         GlobalOptions_0.1.2    fs_1.5.0              </span>
-<span class="co">#&gt;  [10] clue_0.3-59            farver_2.1.0           ggrepel_0.9.1         </span>
-<span class="co">#&gt;  [13] bit64_4.0.5            fansi_0.4.2            codetools_0.2-18      </span>
-<span class="co">#&gt;  [16] splines_4.1.0          doParallel_1.0.16      cachem_1.0.5          </span>
-<span class="co">#&gt;  [19] knitr_1.36             ade4_1.7-16            jsonlite_1.7.2        </span>
-<span class="co">#&gt;  [22] Cairo_1.5-12.2         cluster_2.1.2          png_0.1-7             </span>
-<span class="co">#&gt;  [25] ggdist_3.0.0           compiler_4.1.0         assertthat_0.2.1      </span>
-<span class="co">#&gt;  [28] Matrix_1.3-3           fastmap_1.1.0          htmltools_0.5.2       </span>
-<span class="co">#&gt;  [31] prettyunits_1.1.1      tools_4.1.0            igraph_1.2.6          </span>
-<span class="co">#&gt;  [34] gtable_0.3.0           glue_1.4.2             GenomeInfoDbData_1.2.6</span>
-<span class="co">#&gt;  [37] reshape2_1.4.4         fastmatch_1.1-3        Rcpp_1.0.7            </span>
-<span class="co">#&gt;  [40] Biobase_2.51.0         jquerylib_0.1.4        pkgdown_1.6.1         </span>
-<span class="co">#&gt;  [43] vctrs_0.3.8            Biostrings_2.59.4      rhdf5filters_1.3.5    </span>
-<span class="co">#&gt;  [46] multtest_2.47.0        ape_5.5                nlme_3.1-152          </span>
-<span class="co">#&gt;  [49] DECIPHER_2.20.0        iterators_1.0.13       xfun_0.23             </span>
-<span class="co">#&gt;  [52] stringr_1.4.0          lifecycle_1.0.1        phangorn_2.7.1        </span>
-<span class="co">#&gt;  [55] dendextend_1.15.1      zlibbioc_1.37.0        MASS_7.3-54           </span>
-<span class="co">#&gt;  [58] scales_1.1.1           ragg_1.1.3             hms_1.1.1             </span>
-<span class="co">#&gt;  [61] parallel_4.1.0         biomformat_1.20.0      rhdf5_2.35.5          </span>
-<span class="co">#&gt;  [64] RColorBrewer_1.1-2     ComplexHeatmap_2.8.0   yaml_2.2.1            </span>
-<span class="co">#&gt;  [67] gridExtra_2.3          memoise_2.0.0          sass_0.4.0            </span>
-<span class="co">#&gt;  [70] stringi_1.6.2          RSQLite_2.2.8          highr_0.9             </span>
-<span class="co">#&gt;  [73] S4Vectors_0.29.19      desc_1.4.0             foreach_1.5.1         </span>
-<span class="co">#&gt;  [76] permute_0.9-5          BiocGenerics_0.38.0    shape_1.4.6           </span>
-<span class="co">#&gt;  [79] GenomeInfoDb_1.28.4    rlang_0.4.11           pkgconfig_2.0.3       </span>
-<span class="co">#&gt;  [82] systemfonts_1.0.3      bitops_1.0-7           matrixStats_0.61.0    </span>
-<span class="co">#&gt;  [85] distributional_0.2.2   evaluate_0.14          lattice_0.20-44       </span>
-<span class="co">#&gt;  [88] purrr_0.3.4            Rhdf5lib_1.13.7        labeling_0.4.2        </span>
-<span class="co">#&gt;  [91] bit_4.0.4              tidyselect_1.1.1       plyr_1.8.6            </span>
-<span class="co">#&gt;  [94] magrittr_2.0.1         R6_2.5.1               IRanges_2.25.11       </span>
-<span class="co">#&gt;  [97] generics_0.1.0         picante_1.8.2          DBI_1.1.1             </span>
-<span class="co">#&gt; [100] pillar_1.6.3           withr_2.4.2            mgcv_1.8-35           </span>
-<span class="co">#&gt; [103] survival_3.2-11        RCurl_1.98-1.3         tibble_3.1.2          </span>
-<span class="co">#&gt; [106] crayon_1.4.1           utf8_1.2.1             rmarkdown_2.11        </span>
-<span class="co">#&gt; [109] viridis_0.6.2          GetoptLong_1.0.5       progress_1.2.2        </span>
-<span class="co">#&gt; [112] grid_4.1.0             data.table_1.14.0      blob_1.2.2            </span>
-<span class="co">#&gt; [115] vegan_2.5-7            digest_0.6.27          tidyr_1.1.3           </span>
-<span class="co">#&gt; [118] textshaping_0.3.6      stats4_4.1.0           munsell_0.5.0         </span>
-<span class="co">#&gt; [121] viridisLite_0.4.0      bslib_0.3.1            quadprog_1.5-8</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ggside</span><span class="op">)</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">FuentesIliGutData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html" class="external-link">transform</a></span><span class="op">(</span><span class="st">"compositional"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/biomeUtils/man/mutatePhyloseq.html" class="external-link">mutateTaxaTable</a></span><span class="op">(</span>FeatureID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html" class="external-link">taxa_names</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plotPCoA.html">plotPCoA</a></span><span class="op">(</span>x <span class="op">=</span><span class="va">ps</span>,</span>
+<span>         group_var <span class="op">=</span> <span class="st">"ILI"</span>,</span>
+<span>         ord_method <span class="op">=</span> <span class="st">"PCoA"</span>,</span>
+<span>         dist_method <span class="op">=</span> <span class="st">"bray"</span>,</span>
+<span>         seed <span class="op">=</span> <span class="fl">1253</span>,</span>
+<span>         cor_method <span class="op">=</span> <span class="st">"spearman"</span>,</span>
+<span>         verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>         padj_cutoff <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>         padj_method <span class="op">=</span> <span class="st">"fdr"</span>,</span>
+<span>         arrows <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>         label_col <span class="op">=</span> <span class="st">"grey30"</span>,</span>
+<span>         plot_centroids <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>         add_side_box <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>         axis_plot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>         point_shape <span class="op">=</span> <span class="fl">21</span>,  <span class="co"># point_shape</span></span>
+<span>         point_alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/Themes.html">theme_biomViz_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#3d6721"</span>, <span class="st">"#a86826"</span>, <span class="st">"#006c89"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Random number for permutation analysis ...</span></span>
+<span><span class="co">#&gt; 1253</span></span>
+<span><span class="co">#&gt; 'adonis' will be deprecated: use 'adonis2' instead</span></span>
+<span><span class="co">#&gt; Warning in .check_taxa_axis(axis.a.tax, axis.b.tax): Second of the choosen axis</span></span>
+<span><span class="co">#&gt; in `axis_plot` has no taxa satisfying criteria to plot</span></span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-9-1.png" width="768"></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; R version 4.2.1 (2022-06-23 ucrt)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span></span>
+<span><span class="co">#&gt; Running under: Windows 10 x64 (build 19044)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Matrix products: default</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; locale:</span></span>
+<span><span class="co">#&gt; [1] LC_COLLATE=English_United States.utf8 </span></span>
+<span><span class="co">#&gt; [2] LC_CTYPE=English_United States.utf8   </span></span>
+<span><span class="co">#&gt; [3] LC_MONETARY=English_United States.utf8</span></span>
+<span><span class="co">#&gt; [4] LC_NUMERIC=C                          </span></span>
+<span><span class="co">#&gt; [5] LC_TIME=English_United States.utf8    </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attached base packages:</span></span>
+<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt;  [1] ggside_0.2.0      tidyHeatmap_1.8.1 patchwork_1.1.1   gghalves_0.1.3   </span></span>
+<span><span class="co">#&gt;  [5] dplyr_1.0.9       biomeViz_0.0.06   biomeUtils_0.018  microbiome_1.18.0</span></span>
+<span><span class="co">#&gt;  [9] ggplot2_3.3.6     phyloseq_1.40.0  </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span><span class="co">#&gt;   [1] Rtsne_0.16             colorspace_2.0-3       rjson_0.2.21          </span></span>
+<span><span class="co">#&gt;   [4] ellipsis_0.3.2         rprojroot_2.0.3        circlize_0.4.15       </span></span>
+<span><span class="co">#&gt;   [7] XVector_0.36.0         GlobalOptions_0.1.2    fs_1.5.2              </span></span>
+<span><span class="co">#&gt;  [10] clue_0.3-61            rstudioapi_0.13        farver_2.1.0          </span></span>
+<span><span class="co">#&gt;  [13] ggrepel_0.9.1          bit64_4.0.5            fansi_1.0.3           </span></span>
+<span><span class="co">#&gt;  [16] codetools_0.2-18       splines_4.2.1          doParallel_1.0.17     </span></span>
+<span><span class="co">#&gt;  [19] cachem_1.0.6           knitr_1.39             ade4_1.7-19           </span></span>
+<span><span class="co">#&gt;  [22] jsonlite_1.8.0         cluster_2.1.3          png_0.1-7             </span></span>
+<span><span class="co">#&gt;  [25] ggdist_3.1.1           compiler_4.2.1         assertthat_0.2.1      </span></span>
+<span><span class="co">#&gt;  [28] Matrix_1.4-1           fastmap_1.1.0          cli_3.3.0             </span></span>
+<span><span class="co">#&gt;  [31] htmltools_0.5.2        tools_4.2.1            igraph_1.3.1          </span></span>
+<span><span class="co">#&gt;  [34] gtable_0.3.0           glue_1.6.2             GenomeInfoDbData_1.2.8</span></span>
+<span><span class="co">#&gt;  [37] reshape2_1.4.4         fastmatch_1.1-3        Rcpp_1.0.8.3          </span></span>
+<span><span class="co">#&gt;  [40] Biobase_2.56.0         jquerylib_0.1.4        pkgdown_2.0.5         </span></span>
+<span><span class="co">#&gt;  [43] vctrs_0.4.1            Biostrings_2.64.0      rhdf5filters_1.8.0    </span></span>
+<span><span class="co">#&gt;  [46] multtest_2.52.0        ape_5.6-2              nlme_3.1-157          </span></span>
+<span><span class="co">#&gt;  [49] DECIPHER_2.24.0        iterators_1.0.14       xfun_0.31             </span></span>
+<span><span class="co">#&gt;  [52] stringr_1.4.0          lifecycle_1.0.1        phangorn_2.8.1        </span></span>
+<span><span class="co">#&gt;  [55] dendextend_1.15.2      zlibbioc_1.42.0        MASS_7.3-57           </span></span>
+<span><span class="co">#&gt;  [58] scales_1.2.0           ragg_1.2.2             parallel_4.2.1        </span></span>
+<span><span class="co">#&gt;  [61] biomformat_1.24.0      rhdf5_2.40.0           RColorBrewer_1.1-3    </span></span>
+<span><span class="co">#&gt;  [64] ComplexHeatmap_2.12.0  yaml_2.3.5             gridExtra_2.3         </span></span>
+<span><span class="co">#&gt;  [67] memoise_2.0.1          sass_0.4.1             stringi_1.7.6         </span></span>
+<span><span class="co">#&gt;  [70] RSQLite_2.2.14         highr_0.9              S4Vectors_0.34.0      </span></span>
+<span><span class="co">#&gt;  [73] desc_1.4.1             foreach_1.5.2          permute_0.9-7         </span></span>
+<span><span class="co">#&gt;  [76] BiocGenerics_0.42.0    shape_1.4.6            GenomeInfoDb_1.32.2   </span></span>
+<span><span class="co">#&gt;  [79] rlang_1.0.2            pkgconfig_2.0.3        systemfonts_1.0.4     </span></span>
+<span><span class="co">#&gt;  [82] bitops_1.0-7           matrixStats_0.62.0     distributional_0.3.0  </span></span>
+<span><span class="co">#&gt;  [85] evaluate_0.15          lattice_0.20-45        purrr_0.3.4           </span></span>
+<span><span class="co">#&gt;  [88] Rhdf5lib_1.18.2        labeling_0.4.2         bit_4.0.4             </span></span>
+<span><span class="co">#&gt;  [91] tidyselect_1.1.2       plyr_1.8.7             magrittr_2.0.3        </span></span>
+<span><span class="co">#&gt;  [94] R6_2.5.1               IRanges_2.30.0         generics_0.1.2        </span></span>
+<span><span class="co">#&gt;  [97] picante_1.8.2          DBI_1.1.3              pillar_1.7.0          </span></span>
+<span><span class="co">#&gt; [100] withr_2.5.0            mgcv_1.8-40            survival_3.3-1        </span></span>
+<span><span class="co">#&gt; [103] RCurl_1.98-1.6         tibble_3.1.7           crayon_1.5.1          </span></span>
+<span><span class="co">#&gt; [106] utf8_1.2.2             rmarkdown_2.14         viridis_0.6.2         </span></span>
+<span><span class="co">#&gt; [109] GetoptLong_1.0.5       grid_4.2.1             data.table_1.14.2     </span></span>
+<span><span class="co">#&gt; [112] blob_1.2.3             vegan_2.6-2            digest_0.6.29         </span></span>
+<span><span class="co">#&gt; [115] tidyr_1.2.0            textshaping_0.3.6      stats4_4.2.1          </span></span>
+<span><span class="co">#&gt; [118] munsell_0.5.0          viridisLite_0.4.0      bslib_0.3.1           </span></span>
+<span><span class="co">#&gt; [121] quadprog_1.5-8</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -424,11 +450,13 @@ Data visualization of different data types.</p></li>
 
 
       <footer><div class="copyright">
-  <p>Developed by Sudarshan Shetty, Person Person, Person Person.</p>
+  <p></p>
+<p>Developed by Sudarshan Shetty, Person Person, Person Person.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
@@ -436,6 +464,8 @@ Data visualization of different data types.</p></li>
 
   
 
+
+  
 
   </body>
 </html>
